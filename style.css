@@ -223,7 +223,7 @@ body{
     overflow-y: auto;
     scrollbar-width: thin;
     max-height: 50vh;
-    padding: 15px 0;
+    padding: 0 0 20px 0;
 }
 .parentdiv .rightdiv{
     background: none;
