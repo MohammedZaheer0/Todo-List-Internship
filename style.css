@@ -219,6 +219,12 @@ body{
     font-size: 1.3rem;
     margin: 0;
 }
+#getcontentdiv {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    max-height: 50vh;
+    padding: 15px 0;
+}
 .parentdiv .rightdiv{
     background: none;
     padding: 10px 0;
