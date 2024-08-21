@@ -217,14 +217,15 @@ body{
 }
 .parentdiv .leftdiv h1{
     font-size: 1.3rem;
+    margin: 0;
 }
 .parentdiv .rightdiv{
     background: none;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 .innerrightdiv{
     width: 95%;
-    padding: 30px 15px;
+    padding: 20px 15px;
 }
 .innerrightdiv h1{
     font-size: 1.5rem;
