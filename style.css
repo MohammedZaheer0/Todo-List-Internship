@@ -1,0 +1,436 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+body{
+    overflow: hidden;
+}
+.loginform{
+    height: 80vh;
+    width: 30%;
+    margin: 50px auto;
+    /* background-color: lightcoral; */
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+.loginform h1{
+    text-align: center;
+    padding: 30px;
+}
+#submitform{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+}
+.inputclass{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.inputclass input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px 40px 15px 25px;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    background: linear-gradient(to right,rgb(49, 219, 219),rgb(55, 55, 215));
+    color: white;
+    cursor: pointer;
+}
+.inputclass i{
+    position: absolute;
+    right: 0;
+    padding: 0 10px 0 0;
+}
+#submit{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+/* TodoList CSS */
+.parentdiv{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+    height: 100vh;
+    grid-template-areas: 
+    "leftdiv rightdiv";
+    /* background-color: aquamarine; */
+}
+.parentdiv .leftdiv{
+    /* background-color: yellow; */
+    text-align: center;
+    padding: 10px;
+    grid-area: leftdiv;
+}
+.parentdiv .leftdiv h1{
+    padding: 10px 20px;
+    margin: 10px 0 15px 0;
+}
+#getcontentdiv {
+    color: white;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    max-height: 85vh;
+}
+.parentdiv .rightdiv{
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-area: rightdiv;
+}
+.innerrightdiv{
+    width: 60%;
+    background-color: orangered;
+    padding: 30px;
+    border-radius: 20px;
+}
+.innerrightdiv h1{
+    font-size: 2.5rem;
+    color: #fff;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #fff;
+}
+.innerrightdiv h1, .innerrightdiv p{
+    margin-bottom: 15px;
+    text-align: center;
+}
+.innerrightdiv form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+.innerrightdiv form input{
+    margin: 10px 0;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 1rem;
+}
+.innerrightdiv form button{
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.5rem;
+}
+#clearalltodos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    padding: 15px 35px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: cyan;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+.createdptag{
+    word-spacing: 1px;
+    background-color: tomato;
+    border-radius: 5px;
+    padding: 10px 90px 10px 10px;
+    margin: 10px 0;
+    position: relative;
+    text-align: left;
+}
+.innerEdit{
+    position: absolute;
+    right: 3%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color:black;
+    margin-left: 5px;
+}
+.innerDelete{
+    position: absolute;
+    right: 9%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color:black;
+    margin-right: 5px;
+
+}
+
+
+
+
+
+
+
+
+/* Media Queries */
+@media only screen and (max-width:425px){
+    .loginform{
+        height: 80vh;
+        width: 95%;
+    }
+    .loginform h1{
+        padding: 30px 10px;
+    }
+    #submitform{
+        width: 90%;
+    }
+    #submit{
+        font-size: 1.1rem;
+    }
+
+
+
+
+/* TodoList CSS */
+.parentdiv{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "rightdiv" 
+        "leftdiv";
+    width: 100%;
+    height: 100vh;
+}
+.parentdiv .leftdiv h1{
+    font-size: 1.3rem;
+}
+.parentdiv .rightdiv{
+    background: none;
+    padding: 20px 0;
+}
+.innerrightdiv{
+    width: 95%;
+    padding: 30px 15px;
+}
+.innerrightdiv h1{
+    font-size: 1.5rem;
+}
+.innerrightdiv form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 5px;
+}
+.innerrightdiv form input{
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+.innerrightdiv form button{
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+#clearalltodos{
+    padding: 10px 25px;
+    font-size: 0.9rem;
+}
+.createdptag{
+    border-radius: 5px;
+    padding: 10px 90px 10px 10px;
+}
+.innerEdit{
+    font-size: 1rem;
+}
+.innerDelete{
+    font-size: 1rem;
+}
+
+}
+
+
+
+@media only screen  and (min-width:425px) and (max-width:600px){
+    .loginform{
+        height: 80vh;
+        width: 75%;
+    }
+    .loginform h1{
+        padding: 30px 10px;
+    }
+    #submitform{
+        width: 90%;
+    }
+    #submit{
+        font-size: 1.1rem;
+    }
+
+
+
+    /* TodoList CSS */
+.parentdiv{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "rightdiv" 
+        "leftdiv";
+    width: 100%;
+    height: 100vh;
+}
+.parentdiv .leftdiv h1{
+    font-size: 1.5rem;
+}
+.innerrightdiv{
+    width: 95%;
+    padding: 30px;
+}
+.innerrightdiv h1{
+    font-size: 2rem;
+}
+.innerrightdiv form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 5px;
+}
+.innerrightdiv form input{
+    padding: 15px 20px;
+    font-size: 1rem;
+}
+.innerrightdiv form button{
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.createdptag{
+    border-radius: 5px;
+    padding: 10px 90px 10px 10px;
+}
+}
+@media only screen  and (min-width:600px) and (max-width:768px){
+    .loginform{
+        height: 80vh;
+        width: 60%;
+    }
+    .loginform h1{
+        padding: 30px 10px;
+    }
+    #submitform{
+        width: 90%;
+    }
+    #submit{
+        font-size: 1.1rem;
+    }
+
+
+        /* TodoList CSS */
+.parentdiv{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "rightdiv" 
+        "leftdiv";
+    width: 100%;
+    height: 100vh;
+}
+.parentdiv .leftdiv h1{
+    font-size: 1.5rem;
+}
+.innerrightdiv{
+    width: 95%;
+    padding: 30px;
+}
+.innerrightdiv h1{
+    font-size: 2rem;
+}
+.innerrightdiv form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 5px;
+}
+.innerrightdiv form input{
+    padding: 15px 20px;
+    font-size: 1rem;
+}
+.innerrightdiv form button{
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.createdptag{
+    border-radius: 5px;
+    padding: 10px 90px 10px 10px;
+}
+}
+
+@media only screen  and (min-width:769px) and (max-width:1200px){
+    .loginform{
+        height: 80vh;
+        width: 45%;
+    }
+    .loginform h1{
+        padding: 30px 10px;
+    }
+    #submitform{
+        width: 90%;
+    }
+    #submit{
+        font-size: 1.1rem;
+    }
+
+
+        /* TodoList CSS */
+.parentdiv{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100vh;
+}
+.parentdiv .leftdiv h1{
+    font-size: 1.8rem;
+}
+.innerrightdiv{
+    width: 95%;
+    padding: 40px 10px;
+}
+.innerrightdiv h1{
+    font-size: 2rem;
+}
+.innerrightdiv form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 5px;
+}
+.innerrightdiv form input{
+    padding: 15px 20px;
+    font-size: 1rem;
+}
+.innerrightdiv form button{
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+.createdptag{
+    border-radius: 5px;
+    padding: 10px 90px 10px 10px;
+}
+}

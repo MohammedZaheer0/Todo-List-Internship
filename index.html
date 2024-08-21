@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List Internship</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/eef519840c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <div class="loginform" id="loginform">
+            <h1>Login</h1>
+            <form action="" id="submitform">
+                    <div class="inputclass">
+                        <input type="text" id="fullname" class="inputs" placeholder="Enter Your Name"  name="name">
+                    </div>
+                    <div class="inputclass">
+                        <input type="email" id="email" class="inputs" placeholder="Enter Email Address"  name="email">
+                    </div>
+                    <div class="inputclass">
+                        <input type="password" id="password" class="inputs" placeholder="Enter Password"  name="password">
+                        <i class="fa-solid fa-eye-slash" id="passwordeye"></i>
+                    </div>
+                    <div class="inputclass">
+                        <input type="password" id="confirmpassword" class="inputs" placeholder="Confirm Password"  name="confirmpassword">
+                    </div>
+                    <div class="inputclass">
+                        <input type="submit" id="submit" required name="submit" value="SUBMIT">
+                    </div>
+            </form>
+        </div>
+
+
+
+    <script>
+
+        // Password Show/Hide
+        const passwordeye = document.getElementById("passwordeye");
+        const passwordInput = document.getElementById("password");
+        const confirmpassword = document.getElementById("confirmpassword");
+        const inputs = document.querySelectorAll(".inputs")
+
+        passwordeye.addEventListener("click",function(){
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type",type);
+
+            this.classList.toggle("fa-eye-slash");
+            this.classList.toggle("fa-eye");
+        })
+
+        
+        document.getElementById("submitform").addEventListener("submit",function(e){
+            e.preventDefault();
+
+            let allFilled = true;
+            inputs.forEach((input) => {
+                if(input.value ===""){
+                    allFilled = false;
+                }
+            });
+
+            if(!allFilled){
+                alert("Please Fill The Form");
+                return;
+            }
+
+            if(passwordInput.value !== confirmpassword.value){
+                alert("Password Must Match");
+                return;
+        }
+
+        const formData = {
+            name : document.getElementById("fullname").value,
+            email : document.getElementById("email").value,
+            password : document.getElementById("password").value,
+            confirmpassword : document.getElementById("confirmpassword").value,
+        }
+            let existingData = JSON.parse(localStorage.getItem("todolist"));
+
+            if(!Array.isArray(existingData)){
+                existingData = [];
+            }
+
+            existingData.push(formData);
+            localStorage.setItem("todolist", JSON.stringify(existingData)); 
+
+
+
+            inputs.forEach((input) => {
+                input.value = "";
+            });
+
+            window.location.href = "todolist.html";
+        })
+
+
+        // backgroundColor Basedon time
+        const d = new Date();
+        const Today = d.getHours();
+
+        if (Today >= 1 && Today < 3) {
+            document.getElementById("loginform").style.backgroundColor = "#ff0000";
+        }
+         else if (Today >= 3 && Today < 5) {
+            document.getElementById("loginform").style.backgroundColor = "#000000";
+        }
+         else if (Today >= 5 && Today < 7) {
+            document.getElementById("loginform").style.backgroundColor = "#808080";
+        }
+         else if (Today >= 7 && Today < 9) {
+            document.getElementById("loginform").style.backgroundColor = "#f2f3f4 ";
+        }
+         else if (Today >= 9 && Today < 11) {
+            document.getElementById("loginform").style.backgroundColor = "#704241";
+        }
+         else if (Today >= 11 && Today < 13) {
+            document.getElementById("loginform").style.backgroundColor = "#2f4f4f ";
+        }
+
+        else if (Today >= 13 && Today < 15) {
+            document.getElementById("loginform").style.backgroundColor = "#ffc0cb ";
+        }
+
+        else if (Today >= 15 && Today < 17) {
+            document.getElementById("loginform").style.backgroundColor = "#f4a460 ";
+        }
+
+        else if (Today >= 17 && Today < 19) {
+            document.getElementById("loginform").style.backgroundColor = "#32cd32 ";
+        }
+
+        else if (Today >= 19 && Today < 21) {
+            document.getElementById("loginform").style.backgroundColor = "#efcc00 ";
+        }
+        else if (Today >= 21 && Today < 23) {
+            document.getElementById("loginform").style.backgroundColor = "#dda0dd ";
+        }
+        else if (Today >= 23 && Today < 24) {
+            document.getElementById("loginform").style.backgroundColor = "#dda0dd ";
+        }
+
+
+
+    </script>    
+    <script src="script.js"></script>    
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/eef519840c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Todo Page</title>
+</head>
+<body>
+        <div class="parentdiv">
+            <div class="leftdiv">
+                <h1>Your ToDo List</h1>
+                <div id="getcontentdiv"></div>
+            </div>
+
+            <div class="rightdiv">
+                <div class="innerrightdiv">
+                    <h1>ToDo List </h1>
+                    <p>Enter Your List Below</p>
+                    <form action="" id="todolistform">
+                    <input type="text" name="text" placeholder="Write Something" id="todoinputlist">
+                    <button type="submit" id="todosubmit"><i class="fa-solid fa-plus"></i></button> 
+                </form>                    
+                <button id="clearalltodos">Clear All ToDo's</button>                   
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+            document.getElementById("todolistform").addEventListener("submit", function(e) {
+                e.preventDefault();
+    
+                let todoInput = document.getElementById("todoinputlist").value;
+    
+                if (todoInput === "") {
+                    alert("Please Add Todo List");
+                } else {
+
+                    let GetToDoData = JSON.parse(localStorage.getItem("todoinputlist")) || [];
+
+                    const isEditing = document.getElementById("todolistform").dataset.editIndex;
+
+                    if(isEditing !==undefined){
+                        GetToDoData[isEditing] = todoInput;
+                        document.getElementById("todolistform").removeAttribute("data-edit-index");
+                    }else{
+                        GetToDoData.push(todoInput);
+                    }
+
+                    localStorage.setItem("todoinputlist", JSON.stringify(GetToDoData)); 
+                    document.getElementById("todoinputlist").value = "";  
+                    renderToDoList();
+                }
+            });
+
+
+            function renderToDoList(){
+                let GetToDoData = JSON.parse(localStorage.getItem("todoinputlist")) || [];
+                    // Display only the latest added item
+                    let yourtodolist = document.getElementById("getcontentdiv");
+                    yourtodolist.innerHTML = '';
+                    
+
+                    GetToDoData.forEach((item,index) => {
+
+                    let innerPtag = document.createElement("p");
+                    innerPtag.classList.add("createdptag");
+                    let formattedText = item.match(/.{1,35}/g).join('\n');
+                    innerPtag.textContent = formattedText;
+
+                    // Edit Button
+                    let innerEdit = document.createElement("span");
+                    innerEdit.innerHTML= `<i class="fa-solid fa-pen-to-square"></i>`;
+                    innerEdit.classList.add("innerEdit")
+                    innerEdit.addEventListener("click",function(){
+                        document.getElementById("todoinputlist").value = item;
+                        document.getElementById("todolistform").setAttribute("data-edit-index",index)
+                    })
+                    innerPtag.appendChild(innerEdit);
+
+
+                    // Delete Button
+                    let innerDelete = document.createElement("span");
+                    innerDelete.innerHTML= `<i class="fa-solid fa-trash"></i>`;
+                    innerDelete.classList.add("innerDelete")
+                    innerDelete.addEventListener("click",function(){
+                        GetToDoData.splice(index,1);
+                        localStorage.setItem("todoinputlist",JSON.stringify(GetToDoData));
+                        renderToDoList();
+                        
+                    })
+                    innerPtag.appendChild(innerDelete);
+                    yourtodolist.appendChild(innerPtag);
+
+                });
+
+                document.getElementById("clearalltodos").addEventListener("click",function(){
+                    localStorage.clear();
+                    renderToDoList();
+                })
+            }
+
+    
+            // Load existing to-do list items from localStorage when the page loads
+            window.onload = renderToDoList;
+        </script>
+        <script src="script.js"></script>
+</body>
+</html>
